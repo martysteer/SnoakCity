@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="Lez Skarloff">
-  <meta name="description" content="Sketches of Snoak City, By Lez Skarloff">
+  <meta name="author" content="Les Sklaroff">
+  <meta name="description" content="Sketches of Snoak City, By Les Sklaroff">
   <title>Chapters — Sketches of Snoak City</title>
 
   <link rel="canonical" href="./post.html">
-  <link href="" rel="alternate"
-    type="application/rss+xml" title="Sketches of Snoak City">
+  <link rel="alternate" type="application/rss+xml" href="./post/index.xml" title="Sketches of Snoak City" />
+  <link rel="shortcut icon" type="image/jpg" href="./favicon.ico" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
   <link rel="stylesheet" href='./css/paperback.css'>
   <link rel="stylesheet" href='./css/snoak.css'>
@@ -20,23 +20,70 @@
 
 <body class="calligraphic">
   <script type="text/javascript">
-function toggle (t) {
-	if (document.body.classList.contains('calligraphic')) {
-	    document.body.classList.remove('calligraphic');
+
+function toggleCaligraphic(t) {
+	setCaligraphic(1-getCaligraphic());
+}
+
+
+function setCaligraphic(enabled) {
+	if (enabled) {
+		document.body.classList.add('calligraphic');
+		setCookie('calligraphic', 1, 1);
 	} else {
-	    document.body.classList.add('calligraphic');
+		document.body.classList.remove('calligraphic');
+		setCookie('calligraphic', 0, 1);
 	}
 }
+
+
+function getCaligraphic() {
+	return getCookie('calligraphic');
+}
+
+
+function getCookie(cName) {
+      const name = cName + "=";
+      const cDecoded = decodeURIComponent(document.cookie); 
+      const cArr = cDecoded .split('; ');
+      let res;
+      cArr.forEach(val => {
+          if (val.indexOf(name) === 0) res = val.substring(name.length);
+      })
+      return res;
+}
+
+
+function setCookie(cName, cValue, expDays) {
+        let date = new Date();
+        date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+}
+
+
+window.addEventListener("load", function(){
+	if (getCaligraphic() === undefined) { 
+		setCaligraphic(true);
+	}  else if (getCaligraphic() == 1) { 
+		setCaligraphic(true);
+	} else if (getCaligraphic() == 0) { 
+		setCaligraphic(false);
+	}
+});
 </script>
+
 <style>
-	.change-font {
+	#change-font {
 		text-align: right;
 		color:  white;
 	}
 </style>
-<div class="change-font" onclick="toggle(this)">
+
+<div id="change-font" onclick="toggleCaligraphic(this)">
 	<a href="#" >Change font</a>
 </div>
+
   <div class="container">
     <header>
   <nav class="head-nav">
@@ -61,7 +108,7 @@ function toggle (t) {
     <article>
         <header><h2><a href="./02-foroquonts-maze.html">Foroquont&#39;s Maze</a></h2></header>
 <div>A starburst of globubbles signalled the start of the annual contest in Snoak City’s westernmost district of Whissit Fields. In the warm dusk the bright globes hung like a slowly expanding cluster of floating jewels, casting a network of overlapping colours over this year’s untested challenge that was Foroquont’s maze.
-High above, the maze’s central core—an invisibly tethered pod, its underside a non-reflective black—beamed images of the selected contestants as they each made their way through the four separate entrance locks.</div>
+High above the maze’s central core an invisibly tethered pod its underside a non-reflective black beamed images of the selected contestants as they each made their way through the four separate entrance locks.</div>
 <footer><a href="./02-foroquonts-maze.html" class="readmore">Read more</a></footer>
     </article>
     
@@ -211,18 +258,14 @@ Gyme forced himself not to glance over to where Silki was cowering. Behind his b
   
   <a href="./contents.html"><span>Sketches</span></a>
   
-  <a href="./post.html"><span>Chapters</span></a>
-  
   <a href="./about.html"><span>About</span></a>
   
 </nav>
 
     <footer class="site-footer">
   •<br />
-  <span class="owner">©2021 Lez Skarloff</span><br />
+  <span class="owner">©2021 Les Sklaroff</span><br />
 
-  
-  <a href="https://github.com/mythaxis/SnoakCity"><span>GitHub</span></a>
   
   <a href="https://mythaxis.co.uk"><span>Mythaxis magazine</span></a>
   
@@ -240,7 +283,7 @@ if (!doNotTrack) {
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
-  <!-- Build date: Sun, 27 Jun 2021 20:19:32 UTC -->
+  <!-- Build date: Mon, 16 Aug 2021 14:06:59 UTC -->
 </footer>
 
 

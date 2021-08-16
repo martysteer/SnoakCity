@@ -1,25 +1,28 @@
-
+/* Lucidia handwriting */
+/* (CUFON Fonts) - https://www.cufonfonts.com/font/lucida-handwriting-std */
 @font-face {
-    font-family: "Special Elite";
-    src: url('../fonts/SpecialElite-webfont.eot');
-    src: url('../fonts/SpecialElite-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/SpecialElite-webfont.woff') format('woff'),
-         url('../fonts/SpecialElite-webfont.ttf') format('truetype'),
-         url('../fonts/SpecialElite-webfont.svg#special_eliteregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "LucidiaHandwriting";
+  src: url("../fonts/LucidaHandwritingStdLight.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
-
-/* Cantique, by Sébastien Hayez, Modified & contributed by Ariel Martín Pérez */
-/* (Velvetyne font Foundry) - https://velvetyne.fr/fonts/cantique/ */
 @font-face {
-    font-family: "Cantique";
-    src: url('../fonts/Cantique-Normal.woff2') format('woff2'),
-         url('../fonts/Cantique-Normal.woff') format('woff'),
-         url('../fonts/Cantique-Normal.eot') format('embedded-opentype');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: "LucidiaHandwriting";
+  src: url("../fonts/LucidaHandwritingStdBold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "LucidiaHandwriting";
+  src: url("../fonts/LucidaHandwritingStdBold.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "LucidiaHandwriting";
+  src: url("../fonts/LucidaHandwritingStdBold.woff") format("woff");
+  font-weight: bold;
+  font-style: bolder;
 }
 
 
@@ -31,6 +34,7 @@ html {
 }
 body {
     margin-bottom: 5rem;
+    max-width: 1684px;
 }
 
 
@@ -43,6 +47,7 @@ body {
 }
 .front.container {
     box-shadow: none;
+    transform: none;
 }
 
 .front.container {
@@ -58,17 +63,23 @@ nav.content-nav {
     text-align: center;
 }
 
-nav.site-nav,
 nav.content-nav {
     font-size: 1.1rem;
     margin-top: 2rem;
 }
-
+nav.site-nav {
+    font-size: 1.1rem;
+    margin-top: 0.8rem;
+}
 
 .front nav.front-nav,
 .front nav.site-nav,
 .front footer.site-footer {
     color: #FFF;
+}
+
+.front p a {
+    border-bottom: 0;
 }
 
 footer, .site-nav {
@@ -77,25 +88,65 @@ footer, .site-nav {
 
 article a.readmore,
 p a {
-    text-transform: uppercase;
     font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    border-bottom: 0;
 }
 article a.readmore {
     float: right;
 }
-
-/* Font changing body class */
-body.calligraphic h1 {
-  /*font-family: "Cantique", serif;*/
+blockquote {
+    margin: 0 0 2rem;
+    color: #6f4107;
+}
+figure,
+figure img,
+figure figcaption {
+    display: flex;
+    justify-content: center;
+     margin-top: auto;
 }
 
+/* Font changing body class */
+body.calligraphic {
+  font-family: "LucidiaHandwriting", serif;
+}
+body.calligraphic .container {
+    transform: rotate(-0.5deg);
+}
+@media only screen and (pointer:coarse) and (orientation : portrait) {
+/* mobile devices don't rotate the page when in portrait */
+    body.calligraphic .container {
+        transform: none;
+    }
+}
 
+body.calligraphic h1 {
+  font-family: "LucidiaHandwriting", serif;
+  font-style: normal;
+  font-weight: bold;
+}
+body.calligraphic article a.readmore,
+body.calligraphic p a {
+    font-weight: normal;
+}
+body.calligraphic blockquote p em {
+    font-style: normal;
+}
+
+/* Inverse font on change font link */
+body #change-font {
+    font-family: "LucidiaHandwriting", serif;
+}
+body.calligraphic #change-font {
+    font-family: Arvo, serif;
+}
 
 
 /* TEI styles */
 glyph {
-    /*font-family: "Cantique", serif;*/
-    font-weight: 600;
+    font-weight: bolder;
     font-size: 3em;
     float: left;
     line-height: 1em;
@@ -106,3 +157,12 @@ glyph.small {
     font-size: 2em;
 }
 
+
+/* Font change styles */
+body.calligraphic glyph {
+    font-weight: normal;
+    line-height: 0.8em;
+    padding-top: 0;
+    padding-right: 0.1em;
+    padding-bottom: 0em;
+}
